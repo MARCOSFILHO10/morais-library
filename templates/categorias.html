@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+      <title>Cadastro-Categorias</title>
+  </head>
+  <body class="col-10">
+    <h2 class="text-center">Categorias</h2>
+    <a href="/cadastrar-categoria" class="btn btn-link">Cadastrar Categorias</a>
+    {% block body %}
+      {% if categorias %}
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Nome</th>
+            </tr>
+          <thead>
+          {% for categoria in categorias %}
+          <tbody>
+            <tr>
+              <td> {{categoria.categoria}}</td>
+            </tr>
+          </tbody>
+          {% endfor %}
+        </table>
+      {% else %}
+        <p class="empty text-center"> Categorias não localizadas!</p>
+      {% endif %}
+    {% endblock %}
+  </body>
+</html>

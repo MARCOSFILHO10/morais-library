@@ -3,31 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Cadastro-Livros</title>
 </head>
 <body>
-    <form method="post" action="/cadastro-livro">
-        <div>
+    <form method="post" action="/cadastrar-livro" class="col-8">
+        <h2>Cadastrar livro</h2>
+        <div class="form-group">
             <label>Título:</label>
-            <input type="text" name="titulo"/>
-            <br/>
+            <input type="text" name="titulo" class="form-control" placeholder="Digite aqui seu titulo" />
         </div>
-        <div>
+        <div class="form-group">
+            <label>Categorias:</label>
+            <select name="categoria_id" class="form-control">
+                {% for o in categorias %}
+                    <option value="{{ o.id }}">{{ o.categoria }}</option>
+                {% endfor %} 
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Tematicas:</label>
+            <select name="tematica_id" class="form-control">
+                {% for o in tematicas %}
+                    <option value="{{ o.id }}">{{ o.tematica }}</option>
+                {% endfor %} 
+            </select>
+        </div>
+        <div class="form-group">
             <label>Autor:</label>
-            <input type="text" name="autor"/>
-            <br/>
+            <input type="text" name="autor" class="form-control" placeholder="Digite o autor" />
         </div>
-        <div>
+        <div class="form-group">
             <label>Ano:</label>
-            <input type="number" name="ano"/>
-            <br/>
+            <input type="number" name="ano" class="form-control" placeholder="Digite o ano" />
         </div>
-        <div>
+        <div class="form-group">
             <label>Editora:</label>
-            <input type="text" name="editora"/>
+            <input type="text" name="editora" class="form-control" placeholder="Digite a editora"/>
+        </div>
+        <div class="form-group">
+            <label>Livro pode ser alugado?</label>
+            <input type="checkbox" name="alugar" class="checkbox" />
             <br/>
         </div>
-         <input type="submit" name="submit_button" value="Cadastrar">
+         <input type="submit" class="btn btn-danger" name="submit_button" value="Cadastrar">
     </form> 
+ 
 </body>
 </html>

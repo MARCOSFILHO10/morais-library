@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Cadastro-Tematicas</title>
+</head>
+<body class="col-10">
+  <h2 class="text-center"> Tematicas </h2>
+  <a href="/cadastrar-tematica" class="btn btn-link">Cadastrar Tematicas</a>
+  {% block body %}
+    {% if tematicas %}
+      <table class="table">
+        <tr>
+          <th>Tema</th>
+        </tr>
+        {% for tematica in tematicas %}
+          <tr>
+              <td> {{tematica.tematica}}</td>
+          </tr>
+        {% endfor %}  
+      </table>
+    {% else %}
+      <p class="empty text-center"> Tematicas não localizadas!</p>
+    {% endif %}
+  {% endblock %}
+</body>
+</html>

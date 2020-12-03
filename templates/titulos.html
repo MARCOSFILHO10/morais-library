@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Cadastrar-Titulos</title>
+</head>
+<body class="col-10">
+  <h2 class="text-center"> Titulos </h2>
+  <a href="/cadastrar-titulo" class="btn btn-link">Cadastrar Titulos</a>
+  {% block body %}
+    {% if titulos %}
+      <table class="table">
+        <tr>
+          <th>Nome do título</th>
+          <th></th>
+        </tr>
+        {% for titulo in titulos %}
+          <tr>
+            <td> {{titulo.titulo}}</td>
+            <td> 
+              <form method='POST' action="/deletar-titulo">
+                <input type="hidden" value={{titulo.id}} name="tituloDelete">
+                <input type="submit" value="Delete" class="btn btn-danger">
+              </form>
+            </td>
+          </tr>
+        {% endfor %}
+        {% else %}
+          <p class="empty text-center"> Titulos não localizados!</p>
+        {% endif %}
+      {% endblock %}
+    </tr>
+  </table>
+</body>
+</html>

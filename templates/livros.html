@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Cadastro-Livros</title>
+</head>
+<body class="col-10">
+    <h2 class="text-center">Livros</h2>
+    <a href="/cadastrar-livro" class="btn btn-link">Cadastrar Livro</a>
+  {% block body %}
+    {% if livros %}
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Autor </th>
+          <th>Titulo </th>
+          <th>Categoria </th>
+          <th>Tematica </th>
+          <th>Ano </th>
+          <th>Editora </th>
+        </tr>
+      </thead>
+      <form method='POST' action="/buscar-livros">
+        <label>Filtrar categoria</label>
+        <select name="categoria_id">
+          <option value="todos">Todos</option>
+            {% for o in categorias %}
+              <option value="{{ o.id }}">{{ o.categoria }}</option>
+            {% endfor %} 
+        </select>
+        <input type="submit" value="Buscar" class="btn btn-primary">
+      </form>
+      {% for livro in livros %}
+        <tbody> 
+          <tr>
+            <td> {{livro.autor}}</td>
+            <td> {{livro.titulo}}</td>
+            <td> {{livro.categoria.categoria}}</td>
+            <td> {{livro.tematica.tematica}}</td>
+            <td> {{livro.ano}}</td>
+            <td> {{livro.editora}}</td>
+          </tr>
+        </tbody>
+      {% endfor %}
+    </table>
+    {% else %}
+      <p class="empty text-center">Não foi encontrado Livros.</p>
+    {% endif %}
+  {% endblock %}
+</body>
+</html>
